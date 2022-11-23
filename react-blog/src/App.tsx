@@ -4,6 +4,9 @@ import AboutPage from "./pages/AboutPage";
 import ArticlePage from "./pages/ArticlePage";
 import ArticleListPage from "./pages/ArticleListPage";
 
+//* Other Components
+import NavBar from "./components/NavBar";
+
 //* Import CSS
 import "./App.css";
 //* React Router
@@ -13,7 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>My Blog</h1>
+        <NavBar/>
         <div id="page-body">
           <Routes>
             <Route path="/" element={<HomePage />} />
