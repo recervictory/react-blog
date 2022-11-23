@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import "./App.css";
 //* React Router
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/about" element={<AboutPage/>} /> 
             <Route path="/articles" element={<ArticleListPage />} />
             <Route path="/articles/:articleId" element={<ArticlePage/>} />
+            <Route path="*" element={<NotFoundPage/>} />
           </Routes>
         </div>
       </div>
