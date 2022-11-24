@@ -1,10 +1,13 @@
 import express from "express";
+import cors from 'cors';
 import {db, connectToDb} from "./db.js"
 
 
 const app = express();
 //* IF post have json payload  express convert it to body
 app.use(express.json());
+app.use(cors());
+
 
 //* End Point
 app.get('/api/articles/:name', async (request, response) => {
@@ -51,7 +54,7 @@ app.post('/api/articles/:name/comments', async (request, response) => {
     const article = await db.collection('articles').findOne({name});
 
     if (article) {
-        response.send(article.comments);
+        response.send(article);
     } else {
         response.send(`The ${name} article doesn't exist`);
     }

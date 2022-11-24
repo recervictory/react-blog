@@ -6,11 +6,12 @@ import CommentList from "../components/CommentList";
 import articles from "../assets/articles";
 import NotFoundPage from "./NotFoundPage";
 import axios from "axios";
+import CommentFrom from "../components/CommentFrom";
 
 axios.defaults.baseURL = `http://localhost:8000`;
 
 const ArticlePage = () => {
-  const [articleInfo, setArticleInfo] = useState({ upvotes: 6, comments: [] });
+  const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
   const { articleId } = useParams();
   const article = articles.find((article) => article.name === articleId);
 
@@ -43,7 +44,11 @@ const ArticlePage = () => {
       {content.map((paragraph, index) => (
         <p key={index}>{paragraph}</p>
       ))}
-      <CommentList comments={articleInfo.comments} />
+     {articleInfo.comments.length > 0 && <CommentList comments={articleInfo.comments} />}
+      <CommentFrom articleName={articleId} 
+      onArticleUpadted={ updatedArticle => setArticleInfo(updatedArticle)
+      }
+      />
     </>
   );
 };
