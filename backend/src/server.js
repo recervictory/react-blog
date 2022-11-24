@@ -8,9 +8,10 @@ app.use(express.json());
 
 //* End Point
 app.get('/api/articles/:name', async (request, response) => {
+  console.log("Hi")
   const {name} = request.params;
   const article = await db.collection('articles').findOne({name});
-
+  console.log(article);
   if (article) {
     response.json(article);
   } else {
@@ -32,9 +33,9 @@ app.put('/api/articles/:name/upvote', async (request, response) => {
     const article = await db.collection('articles').findOne({name})
 
     if (article) {
-        response.send(`The ${name} article now has upvotes ${article.upvotes}`);
+        response.send(article);
     } else {
-        response.send(`The ${name} article doesn't exist`);
+        response.sendStatus(404);
     }
 });
 
