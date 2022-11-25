@@ -4,6 +4,7 @@ import AboutPage from "./pages/AboutPage";
 import ArticlePage from "./pages/ArticlePage";
 import ArticleListPage from "./pages/ArticleListPage";
 
+
 //* Other Components
 import NavBar from "./components/NavBar";
 
@@ -12,6 +13,8 @@ import "./App.css";
 //* React Router
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage";
+import LoginPage from "./pages/LoginPage";
+import CreateAccountPage from "./pages/CreateAccountPage";
 
 function App() {
   return (
@@ -24,6 +27,8 @@ function App() {
             <Route path="/about" element={<AboutPage/>} /> 
             <Route path="/articles" element={<ArticleListPage />} />
             <Route path="/articles/:articleId" element={<ArticlePage/>} />
+            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/newuser" element={<CreateAccountPage />} />
             <Route path="*" element={<NotFoundPage/>} />
           </Routes>
         </div>
